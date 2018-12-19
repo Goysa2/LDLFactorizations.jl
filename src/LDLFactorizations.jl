@@ -80,7 +80,8 @@ function ldl_numeric!(n, Ap, Ai, Ax, Lp, parent, Lnz, Li, Lx, D, Y,
       Lnz[i] += 1
       top += 1
     end
-    D[k] == 0 && throw(SQDException("matrix does not possess a LDL' factorization for this permutation"))
+    # D[k] == 0 && throw(SQDException("matrix does not possess a LDL' factorization for this permutation"))
+    D[k] = max(D[k], sqrt(eps(typeof(D[k])))) # temporary
   end
 end
 
